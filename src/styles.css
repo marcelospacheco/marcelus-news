@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Newsreader", Georgia, "Iowan Old Style", serif;
+  --color-paper: #f6f1e8;
+  --color-card: #fffaf3;
+  --color-ink: #1a0b0d;
+  --color-muted: #6a4548;
+  --color-line: #f0d4d6;
+  --color-mast: #c1121f;
+  --color-mast-fg: #fff8f6;
+  --color-mast-muted: #ffd0d4;
+  --color-accent: #8c1c13;
+  --color-accent-fg: #fff7f5;
+  --color-signal: #f0b429;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    overflow-x: clip;
+    text-wrap: pretty;
+  }
+
+  p, h1, h2, h3, li {
+    overflow-wrap: break-word;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}
+
+@keyframes pulse-dot {
+  50% { opacity: 0.35; }
+}
+
+.live-dot {
+  animation: pulse-dot 1.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-dot { animation: none; }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
